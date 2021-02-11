@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DERET FIBONANCI</h1> <BR>
+    Masukan Angka : <input type="number" placeholder="masukan angka" id="number">
+    <br> <br>
+    <button onclick="onclikshow()">SHOW</button>
+    <button onclick="onclikganjil()">GANJIL</button>
+    <button onclick="onclikgenap()">GENAP</button>
+    <br>
+    <h1>RESULT :</h1>
+    <div id="fibonanci"></div>
+</body>
+<SCRIPT>
+    var angka=document.getElementById('number').value
+    var result
+    const fibo=(angka)=>{
+        if(angka<3){
+            return 1
+        }
+        return fibo(angka-1)+fibo(angka-2)
+    }
+
+        let fiboganjilgenap=fibo % 2
+        if (fibo % 2 = fiboganjilgenap){
+            return 'ganjil'
+        }else{
+            return 'genap'
+    }
+    
+    const onclikshow=(angka)=>{
+        document.getElementById('fibonanci').innerHTML=fibo
+    }
+    
+    const onclikganjil=(angka)=>{
+        
+    }
+    
+    const onclikgenap=()=>{
+        
+    }
+    
+    
+
+
+
+</SCRIPT>
+</html>

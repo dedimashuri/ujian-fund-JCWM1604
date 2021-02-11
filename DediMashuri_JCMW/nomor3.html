@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    tr,td,th,table{
+        border-collapse: collapse;
+        border: 1px solid black;
+        padding: 5px;
+    }
+    </style>
+</head>
+<body>
+    <h2>FORM USERS</h2>
+    <BR>
+    </table>
+    <input type="text" placeholder="username" id="username">
+    <input type="text" placeholder="email" id="email">
+    role
+    <select id="user">
+        <option value="0">user</option>
+        <option value="1">admin</option>
+    </select>
+    <br><br>
+    <button onclick="onadduser()">ADD USER</button>
+    <br><br>
+    <h2>USERS DATA</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="renderdata">
+
+        </tbody>
+            <input type="button" onclick="oneditclik() value='yes'">
+        </body>
+
+<script>
+    class userData{
+        constructor(_Username,_Email,_Role,_Action){
+        this.Username=_Username
+        this.Email=_Email
+        this.Role=_Role
+        this.Action=_Action
+    }
+}
+
+var indexedit=-1
+var indexdelete=-1
+
+var listUserdata=[
+    new userData('alee','alee@gmail.com','admin')
+    new userData('jennie','jenniebp@gmail.com','user')
+    new userData('elsa','elsa@gmail.com','user')
+]
+
+const printData=()=>{
+    var result=listUserdata.map((val,index)=>{
+    if (indexdelete == index){
+        return `<tr>
+                    <td>${index+1}</td>
+                    <td>${val.username}</td>
+                    <td>${val.email}</td>
+                    <td>${val.user}</td>
+                    <td>
+                        <input type="button" onclick="ondeletyesclik(${index})" value='yes'>
+                        <input type="button" onclick="ondeletenoclik()" value='no'>
+                    </td>
+                </tr>`
+    }else if(indexedit == index){
+        return `<tr>
+                    <td>${index+1}</td>
+                    <td><input type="text" value=${val.username} palceholder="username" id="editusername${index}"></td>
+                    <td><input type="text" value=${val.email} palceholder="email" id="editemail${index}"></td>
+                    <td><input type="select" value=${val.role} id="editrole${index}"></td>
+                    <td>
+                        <input type="button" onclick="oneditclik()" value='yes'>
+                        <input type="button" onclick="ondeleteclik()" value='yes'>
+                    </td>
+                </tr>`
+    }
+    return `<tr>
+                    <td>${index+1}</td>
+                    <td><input type="text" value=${val.username} palceholder="username" id="editusername${index}"></td>
+                    <td><input type="text" value=${val.email} palceholder="email" id="editemail${index}"></td>
+                    <td><input type="select" value=${val.role} id="editrole${index}"></td>
+                    <td>
+                        <input type="button" onclick="onesaveclik()" value='yes'>
+                        <input type="button" onclick="oncancelclik()" value='yes'>
+                    </td>
+                </tr>
+                `
+    })
+document.getElementById('renderData').innerHTML=result.join('')
+}
+
+const ondeleteclik=(index)=>{
+    indexdelete=index
+    printData()
+}
+const oneditclik=(index)=>{
+    indexedit=index
+    printData()
+}
+const ondeleteyesclik=(index)=>{
+    listUserdata.splice(index,1)
+    printData()
+}
+const onCancelclik=(index)=>{
+    indexedit=-1
+    printData()
+}
+const onSaveclik=(index)=>{
+    var editusername=document.getElementById('editusername'+indexedit).value
+    var editemail=document.getElementById('editemail'+indexedit).value
+    var editrole=document.getElementById('editrole'+indexedit).value
+    listUserdata[index].username=editusername
+    listUserdata[index].email=editemail
+    listUserdata[index].role=editrole
+    indexedit=-1
+    printData()
+}
+printData()
+</script>
+</html>

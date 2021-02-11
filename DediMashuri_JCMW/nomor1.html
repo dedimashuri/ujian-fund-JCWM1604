@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>PATTERN</h1> <br>
+    <input type="number" placeholder="masukan angka" id="angka">
+    <br><br>
+    <button onclick="clikganjil()">GANJIL</button>
+    <button onclick="clikhuruf()">HURUF</button>
+    <br>
+    <h1>RESULT :</h1>
+    <div id="result">
+
+    </div>
+    
+</body>
+<script>
+
+var angka=document.getElementById('angka').value
+var result
+
+const clikganjil=(angka)=>{
+var result=''
+    for (let i=0;i<angka;i++){
+        for (let j=0;j<=i;j+2){
+            result+=index
+        }
+        result+='<br>'
+    }
+    document.getElementById('result').innerHTML.result
+}
+
+const clikhuruf=(angka)=>(
+    var result=''
+    for (let i=0;i<angka;i++){
+        for (let j=0;j<=i;j+2){
+            result+=index
+        }
+        result+='<br>'
+    }
+    document.getElementById('result').innerHTML.result
+
+)
+
+
+</script>
+</html>
